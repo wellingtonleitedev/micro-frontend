@@ -1,10 +1,13 @@
 import React from 'react';
-import { InputStyled, Label  } from './styles'
+import { Wrapper, Label, InputStyled  } from './styles'
 
-export const Input: React.FC = ({...props}) => {
-  return (
-    <Label>
-      <InputStyled {...props} />
-    </Label>
-  )
+type InputProps = React.InputHTMLAttributes<HTMLInputElement> & {
+  label: JSX.Element | string;
 }
+
+export const Input: React.FC<InputProps> = ({ label, ...props }) => (
+  <Wrapper>
+    <Label>{label}</Label>
+    <InputStyled {...props} />
+  </Wrapper>
+);
